@@ -9,16 +9,16 @@ public class Carteira {
 		System.out.println("#################");
 	}
 	
-	void venda(Estoque stock, int qtBolo) {
-		if (stock.bolos_quant >= qtBolo) { // Verificando se possui bolo suficiente
+	void venda(Estoque stock, int qtBuy) {
+		if (stock.quant >= qtBuy) { // Verificando se tem a quantidade suficiente
 			
 			// Efetudo a compra e tirada do estoque
-			stock.add(qtBolo, "venda");
-			this.trade("entrada", (qtBolo*stock.valor));
-			System.out.println("Bolos vendidos: " + qtBolo);			
+			stock.add(qtBuy, "venda");
+			this.trade("entrada", (qtBuy*stock.valor));
+			System.out.println(stock.nome+" vendidos: " + qtBuy);			
 			
 		} else {
-			System.out.println("Não temos tudo isso de bolo :(");
+			System.out.println("Não temos tudo isso de "+stock.nome+" :(");
 		}
 		// Mostrar informações após a venda
 		stock.status();

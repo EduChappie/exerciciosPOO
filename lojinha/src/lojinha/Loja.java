@@ -6,16 +6,27 @@ public class Loja {
 		Carteira cofre = new Carteira();
 		cofre.dinheiro = (float) 10.50;
 		
-		//Definição do Estoque
-		Estoque bolo = new Estoque();
-		bolo.valor = (float) 9.99;
-		bolo.bolos_quant = 5;
+		//Definição do Produto que estará no estoque
+		Estoque prod1 = new Estoque(); // Criação da Coca-cola
+		prod1.nome = "Coca-cola";
+		prod1.valor = (float) 10.50;
+		prod1.quant = 4;
 		
-		bolo.status();
+		Estoque prod2 = new Estoque(); // Criação da Pizza
+		prod2.nome = "Pizza";
+		prod2.valor = (float) 34.50;
+		prod2.quant = 10;
+		
+		
+		
+		// Console de execução *testes*
+		prod1.status();
+		prod2.status();
 		cofre.status();
 		
-		cofre.venda(bolo, 4);
-		cofre.venda(bolo, 2);
-		cofre.venda(bolo, 1);
+		cofre.venda(prod1, 2);
+		cofre.venda(prod2, 5);
+		cofre.venda(prod1, 3);
+		
 	}
 }
