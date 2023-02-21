@@ -2,34 +2,35 @@ package lojinha;
 
 public class Carteira {
 	
-	float dinheiro;
+	private float dinheiro;
 	
-	void status() {
+	public void status() {
 		System.out.println("Carteira da loja: R$ " + this.dinheiro);
 		System.out.println("#################");
 	}
 	
-	void venda(Estoque stock, int qtBuy) {
-		if (stock.quant >= qtBuy) { // Verificando se tem a quantidade suficiente
-			
-			// Efetudo a compra e tirada do estoque
-			stock.add(qtBuy, "venda");
-			this.trade("entrada", (qtBuy*stock.valor));
-			System.out.println(stock.nome+" vendidos: " + qtBuy);			
-			
+	public void compra(Estoque prod, int qtd) {
+		this.trade("saida", (qtd*2.0f));
+		prod.add(qtd, "compra");
+	}
+	public void venda(Estoque prod, int qtd) {
+		
+		if (qtd > prod.quant) {
+			System.out.println("Não temos tudo isso de "+prod.nome+" :(");
 		} else {
-			System.out.println("Não temos tudo isso de "+stock.nome+" :(");
+			System.out.println("Foi comprado: "+qtd+" "+prod.nome);
+			this.trade("entrada", (qtd*prod.valor));
+			prod.add(qtd, "venda");
 		}
-		// Mostrar informações após a venda
-		stock.status();
-		this.status();
+		
 	}
 	
-	void trade(String action, float $) {
+	private void trade(String action, float $) {
 		// Parte de "trade" de tirar e por o dinheiro
 		if (action == "entrada") {
 			System.out.println("Valor total da compra: R$ " + $);
 			this.dinheiro = this.dinheiro + $;
+			System.out.println("-");
 			
 		} else if (action == "saida") {
 			this.dinheiro = this.dinheiro - $;

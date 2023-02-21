@@ -4,18 +4,18 @@ public class Loja {
 	public static void main(String args[]) {
 		// Definição do Banco
 		Carteira cofre = new Carteira();
-		cofre.dinheiro = (float) 10.50;
 		
 		//Definição do Produto que estará no estoque
 		Estoque prod1 = new Estoque(); // Criação da Coca-cola
-		prod1.nome = "Coca-cola";
-		prod1.valor = (float) 10.50;
-		prod1.quant = 4;
+		prod1.nome = "coxinha";
+		prod1.valor = (float) 5;
+		cofre.compra(prod1, 4);
 		
 		Estoque prod2 = new Estoque(); // Criação da Pizza
 		prod2.nome = "Pizza";
 		prod2.valor = (float) 34.50;
-		prod2.quant = 10;
+		prod2.add(10, "saida");
+		cofre.compra(prod2, 10);
 		
 		
 		
@@ -26,7 +26,10 @@ public class Loja {
 		
 		cofre.venda(prod1, 2);
 		cofre.venda(prod2, 5);
-		cofre.venda(prod1, 3);
+		cofre.venda(prod1, 2);
+		cofre.venda(prod1, 1);
+		
+		cofre.status();
 		
 	}
 }
