@@ -1,5 +1,7 @@
 package files
 
+// nada haver com instagram esse arquivo :)
+
 import java.io.FileWriter
 import java.io.IOException
 
@@ -28,7 +30,7 @@ class SystemConsol(): LoggerGeneric {
 class SystemFiles(): LoggerGeneric {
     override fun log(msg: String) {
         println("escrevendo '$msg' no arquivo");
-        val path = "/Users/Windows.lite/Downloads/msg.txt"
+        val path = "/all_path/msg.txt"
         try {
             val fw = FileWriter(path, true)
             fw.write(msg);
